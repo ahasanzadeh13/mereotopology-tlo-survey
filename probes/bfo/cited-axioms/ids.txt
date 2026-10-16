@@ -1,0 +1,15 @@
+# Every BFO-2020 Common Logic axiom id cited in Section 6.2 of the paper.
+# The check: each id resolves to exactly one labeled axiom in the CL corpus
+# at the pinned commit (Table 2), and its source comment is reproduced below
+# the id in the results for side-by-side comparison with the paper's reading.
+esh-2
+glc-2
+mcd-1
+pir-2
+qnf-1
+qyy-1
+scr-1
+tab-1
+txf-1
+wix-1
+xlu-1

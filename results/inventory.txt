@@ -1,0 +1,17 @@
+inventory: DOLCE (DOLCEbasic + DOLCEnaryRel)
+  overlap defined by chain inv(partOf) o partOf: PASS
+  sum chains owned by partOf (both addends): PASS
+  presence chains on presentAt (suite present): PASS
+  transitivity on the parthood family: PASS
+  no connection or boundary vocabulary: PASS
+  no SWRL rules in the pinned release: PASS
+  no SHACL shapes in the pinned release: PASS
+inventory: gUFO
+  isSubCollectionOf and isSubQuantityOf declared transitive: PASS
+  isComponentOf and isCollectionMemberOf left undeclared: PASS
+  no connection vocabulary: PASS
+inventory: GFO (gfo-base)
+  typed boundary vocabulary present: PASS
+  no connection or coincidence relation: PASS
+  occupies functional / occupied_by inverse-functional: PASS
+result: PASS

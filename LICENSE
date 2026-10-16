@@ -1,0 +1,18 @@
+Supplementary material for:
+"The Mereotopological Capabilities of Top-Level Ontologies:
+ A Survey from an Industrial Perspective"
+Copyright (c) 2026 Ali Hasanzadeh and Farhad Ameri
+
+This work is licensed under the Creative Commons Attribution 4.0
+International License (CC BY 4.0). To view a copy of this license, visit:
+
+    https://creativecommons.org/licenses/by/4.0/
+
+You are free to share and adapt this material for any purpose, provided
+you give appropriate credit, link to the license, and indicate if changes
+were made.
+
+The six ontology corpora evaluated by these probes are NOT distributed
+with this material. They are fetched at pinned commits by
+pins/fetch_pins.sh and remain under their own upstream licenses; see
+pins/manifest.tsv for the repositories and commits.

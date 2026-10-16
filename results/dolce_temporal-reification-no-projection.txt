@@ -1,0 +1,9 @@
+probe: dolce/temporal-reification-no-projection
+triples before/after closure: 2853/7010
+  entailed  p:x basic:presentAt p:t: PASS
+  entailed  p:y basic:presentAt p:t: PASS
+  absent    p:x basic:partOf p:y: PASS
+  absent    p:x basic:properPartOf p:y: PASS
+  absent    p:x basic:constantPartOf p:y: PASS
+  absent    p:x basic:overlaps p:y: PASS
+result: PASS

@@ -1,0 +1,20 @@
+{
+  "id": "dolce/temporal-reification-no-projection",
+  "modules": ["DOLCE/OWL/DOLCEbasic.owl", "DOLCE/OWL/DOLCEnaryRel.owl"],
+  "assertions": "assertions.ttl",
+  "prefixes": {
+    "basic": "https://w3id.org/DOLCE/OWL/DOLCEbasic#",
+    "nary": "https://w3id.org/DOLCE/OWL/DOLCEnaryRel#",
+    "p": "https://example.org/mt-probe#"
+  },
+  "expect_entailed": [
+    ["p:x", "basic:presentAt", "p:t"],
+    ["p:y", "basic:presentAt", "p:t"]
+  ],
+  "expect_absent": [
+    ["p:x", "basic:partOf", "p:y"],
+    ["p:x", "basic:properPartOf", "p:y"],
+    ["p:x", "basic:constantPartOf", "p:y"],
+    ["p:x", "basic:overlaps", "p:y"]
+  ]
+}

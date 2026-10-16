@@ -1,0 +1,16 @@
+{
+  "id": "gfo/occupation-functionality",
+  "modules": ["GFO/modules/gfo-base.owl"],
+  "assertions": "assertions.ttl",
+  "prefixes": {
+    "gfob": "https://w3id.org/gfo/base/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "p": "https://example.org/mt-probe#"
+  },
+  "expect_entailed": [
+    ["p:s1", "owl:sameAs", "p:s2"]
+  ],
+  "expect_absent": [
+    ["p:p1", "owl:sameAs", "p:p2"]
+  ]
+}

@@ -1,0 +1,19 @@
+; Pump encoding, SUMO (pins: ontologyportal/sumo @ b1af486, Merge.kif).
+; R1: parthood with temporal context -- the holdsDuring wrapper carries
+; the assertion's time. Expressive in the corpus; the paper records that
+; the wrapper does not survive the OWL translation pipelines.
+(instance Pump1 Object)
+(instance Impeller1 Object)
+(instance Housing1 Object)
+(holdsDuring
+   (WhenFn Maintenance1)
+   (part Impeller1 Pump1))
+
+; R2: the joint, two ways. Plain spatial meeting is expressible:
+(meetsSpatially Impeller1 Housing1)
+
+; The purpose-built reified joint is natively assertable:
+(connectedEngineeringComponents Impeller1 Housing1)
+; ...and unsatisfiable as axiomatized: see
+; probes/sumo/joint-unsatisfiability. The assertion above is well-formed
+; SUO-KIF that no model of the corpus's own axioms can make true.

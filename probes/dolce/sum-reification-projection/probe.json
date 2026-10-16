@@ -1,0 +1,19 @@
+{
+  "id": "dolce/sum-reification-projection",
+  "modules": ["DOLCE/OWL/DOLCEbasic.owl", "DOLCE/OWL/DOLCEnaryRel.owl"],
+  "assertions": "assertions.ttl",
+  "prefixes": {
+    "basic": "https://w3id.org/DOLCE/OWL/DOLCEbasic#",
+    "nary": "https://w3id.org/DOLCE/OWL/DOLCEnaryRel#",
+    "p": "https://example.org/mt-probe#"
+  },
+  "expect_entailed": [
+    ["p:a", "basic:partOf", "p:s"],
+    ["p:b", "basic:partOf", "p:s"]
+  ],
+  "expect_absent": [
+    ["p:s", "basic:partOf", "p:a"],
+    ["p:a", "basic:partOf", "p:b"],
+    ["p:a", "basic:overlaps", "p:b"]
+  ]
+}

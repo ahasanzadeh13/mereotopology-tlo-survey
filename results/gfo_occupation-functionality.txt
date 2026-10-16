@@ -1,0 +1,5 @@
+probe: gfo/occupation-functionality
+triples before/after closure: 905/3881
+  entailed  p:s1 owl:sameAs p:s2: PASS
+  absent    p:p1 owl:sameAs p:p2: PASS
+result: PASS

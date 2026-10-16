@@ -1,0 +1,10 @@
+# Test assertion set: one reified atemporal sum (DOLCEnaryRel).
+# Asserted: the reification only. Anything mereological must come from
+# the module's own chain axioms on partOf.
+@prefix nary: <https://w3id.org/DOLCE/OWL/DOLCEnaryRel#> .
+@prefix p:    <https://example.org/mt-probe#> .
+
+p:sum1 a nary:RRelSum ;
+    nary:sumAddend1 p:a ;
+    nary:sumAddend2 p:b ;
+    nary:sumResult  p:s .

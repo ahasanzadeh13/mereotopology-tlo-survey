@@ -1,0 +1,6 @@
+probe: gufo/shacl-silence
+conforms: False
+violations reported: 3
+violations on the type-side control (BadKind): 3
+violations on the mereological errors: 0
+result: PASS (expected: 3 violations, all on the control, none mereological)

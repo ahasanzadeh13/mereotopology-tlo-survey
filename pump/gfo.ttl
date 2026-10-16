@@ -1,0 +1,16 @@
+# Pump encoding, GFO (pins: Onto-Med/GFO @ 233b38d, gfo-base module).
+# R1: the typed parthood suite. gfo-base ships part_of with typed
+# refinements (constituent_part_of, categorial_part_of,
+# abstract_part_of); a material component is asserted by part_of.
+@prefix gfob: <https://w3id.org/gfo/base/> .
+@prefix p:    <https://example.org/mt-pump#> .
+
+p:impeller a gfob:Presential ;
+    gfob:part_of p:pump .
+p:pump a gfob:Presential .
+
+# R2: the impeller-housing joint is inexpressible at this layer. The
+# theory defines boundary coincidence (the two-level doctrine), but the
+# artifact ships no connection or coincidence relation; the front page
+# names coincidence among the outstanding features, and no artifact
+# vocabulary can state it.

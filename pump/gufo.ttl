@@ -1,0 +1,18 @@
+# Pump encoding, gUFO (pins: nemo-ufes/gufo @ f412254).
+# R1: componentOf, typed. The artifact ships isComponentOf beneath
+# isObjectProperPartOf, domain/range-typed to functional complexes; the
+# theory's necessity overlay (essential parthood) is not carried by the
+# artifact.
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix p:    <https://example.org/mt-pump#> .
+
+p:Pump a owl:Class, gufo:Kind .
+p:Impeller a owl:Class, gufo:Kind .
+p:pump1 a gufo:FunctionalComplex, p:Pump .
+p:impeller1 a gufo:FunctionalComplex, p:Impeller ;
+    gufo:isComponentOf p:pump1 .
+
+# R2: the impeller-housing joint is inexpressible. gUFO carries no
+# connection predicate; topology enters the corpus only as a classifier
+# (maximal self-connectedness in prose).

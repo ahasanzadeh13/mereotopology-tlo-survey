@@ -1,0 +1,12 @@
+probe: sumo/joint-unsatisfiability
+  exhaustive n=2: 9216 interpretations checked, 0 satisfy A1-A7 with CEC(0,1)
+  witness refutation n=2: 2/2 witness cases close on connected(0,1) vs NOT connected(0,1)
+  witness refutation n=3: 3/3 witness cases close on connected(0,1) vs NOT connected(0,1)
+  witness refutation n=4: 4/4 witness cases close on connected(0,1) vs NOT connected(0,1)
+  control: all-empty interpretation satisfies A1-A7 (CEC unasserted)
+result: PASS (expected: no model with the assertion, axioms alone satisfiable)
+
+probe: sumo/sum-chain-forcing
+  exhaustive n=2: 2 models of S1-S3; 2 are chains; 0 admit a 2-member collection
+  exhaustive n=3: 6 models of S1-S3; 6 are chains; 0 admit a 2-member collection
+result: PASS (expected: satisfiable, all models chains, no 2-member collection)

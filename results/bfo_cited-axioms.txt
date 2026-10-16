@@ -1,0 +1,14 @@
+probe: bfo/cited-axioms
+ids cited in the paper: 11
+  [esh-2] PASS  occurrent-mereology.cl: a process boundary is any temporal part of a process that has no proper temporal parts.
+  [glc-2] PASS  continuant-mereology.cl: If at all times that two object-aggregates exist each is part of the other, then they are identical
+  [mcd-1] PASS  continuant-mereology.cl: continuant-part-of is reflexive at a time
+  [pir-2] PASS  temporal-region.cl: The only part of a temporal instant is itself
+  [qnf-1] PASS  order.cl; temporal-region.cl (stated in 2 files): temporal instants are totally ordered
+  [qyy-1] PASS  spatiotemporal.cl: for every process or process boundary there\'s a corresponding spatiotemporal region that it occupies
+  [scr-1] PASS  spatial.cl: No two material entities occupy the same space unless they coincide
+  [tab-1] PASS  continuant-mereology.cl: If at any time that two non-object aggregates exist each is part of the other, then they are identical
+  [txf-1] PASS  occurrent-mereology.cl: Two spatiotemporal regions are parts when they are temporal parts and their spatial projects are always parts
+  [wix-1] PASS  order.cl: If you are part of something that precedes something else, you also precede it
+  [xlu-1] PASS  occurrent-mereology.cl: occurrent-part-of is antisymmetric
+result: PASS

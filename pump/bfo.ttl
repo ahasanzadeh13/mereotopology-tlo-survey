@@ -1,0 +1,17 @@
+# Pump encoding, BFO (pins: BFO-ontology/BFO-2020 @ dd89f4a, temporalized
+# relations profile).
+# R1: continuant parthood by the temporalized pair. The profile ships
+# "proper continuant part of at some time" (BFO_0000175) and
+# "continuant part of at all times" (BFO_0000177); the impeller, replaced
+# at maintenance, is a proper part at some time, not at all times.
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix p:   <https://example.org/mt-pump#> .
+
+p:impeller a obo:BFO_0000030 ;          # object
+    obo:BFO_0000175 p:pump .            # proper continuant part of at some time
+p:pump a obo:BFO_0000030 .
+
+# R2: the impeller-housing joint is inexpressible. The 2020 standard and
+# its OWL profiles carry no connection relation (the earlier
+# boundary-and-connection apparatus is absent from the standard); the
+# ecosystem's adjacent_to lives in RO, outside the standard.

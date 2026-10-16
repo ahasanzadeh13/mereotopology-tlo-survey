@@ -1,0 +1,16 @@
+# Pump encoding, DOLCE (pins: appliedontolab/DOLCE @ 0e059fd).
+# R1: the impeller is part of the pump during the interval t1 -- asserted
+# through the reified temporary-parthood pattern of DOLCEnaryRel. The
+# presence chains project presence; by design nothing projects to a
+# timeless binary parthood (see probes/dolce/).
+@prefix nary: <https://w3id.org/DOLCE/OWL/DOLCEnaryRel#> .
+@prefix p:    <https://example.org/mt-pump#> .
+
+p:r1 a nary:RRelTempPart ;
+    nary:tempPart  p:impeller ;
+    nary:tempWhole p:pump ;
+    nary:rRelTime  p:t1 .
+
+# R2: the impeller-housing joint is inexpressible. DOLCE's artifact (and
+# theory) carries no connection or contact vocabulary; the absence check
+# is recorded in results/inventory_dolce.txt.

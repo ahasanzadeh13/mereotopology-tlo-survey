@@ -1,0 +1,10 @@
+# Test assertion set: one complete reified temporal-parthood instance
+# (DOLCEnaryRel). x is asserted to be part of y at time t, in reified
+# form only. Whatever the module projects must come from its own chains.
+@prefix nary: <https://w3id.org/DOLCE/OWL/DOLCEnaryRel#> .
+@prefix p:    <https://example.org/mt-probe#> .
+
+p:tp1 a nary:RRelTempPart ;
+    nary:tempPart  p:x ;
+    nary:tempWhole p:y ;
+    nary:rRelTime  p:t .

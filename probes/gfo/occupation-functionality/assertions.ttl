@@ -1,0 +1,15 @@
+# Test assertion set: the two directions of GFO's occupation declarations.
+# gfo-base declares occupies (Presential -> Space) functional and its
+# inverse occupied_by inverse-functional -- the same constraint twice.
+#
+# Co-location: two presentials occupy one space entity.
+# Multilocation: one presential occupies two space entities.
+@prefix gfob: <https://w3id.org/gfo/base/> .
+@prefix p:    <https://example.org/mt-probe#> .
+
+# co-location (must remain consistent, no identification)
+p:p1 a gfob:Presential ; gfob:occupies p:s .
+p:p2 a gfob:Presential ; gfob:occupies p:s .
+
+# multilocation (the spaces must be identified)
+p:q a gfob:Presential ; gfob:occupies p:s1 , p:s2 .

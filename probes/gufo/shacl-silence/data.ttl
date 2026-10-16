@@ -1,0 +1,45 @@
+# Test data for the SHACL companion (gufoshapes.ttl at the gUFO pin).
+# Three ingredients in one graph:
+#
+#   (1) a type-side control: BadKind violates the taxonomy constraints the
+#       shapes are written for -- it specializes a Kind, a SubKind, and
+#       Event, yielding exactly three violations (two under the forbidden-
+#       sortal-specialization check, one under the powertype check);
+#   (2) a supplementation violation: a functional complex with exactly one
+#       proper component and no remainder;
+#   (3) the banned member chain: a part of a member asserted as a proper
+#       part of the collective, which the theory's member-atomicity bans.
+#
+# Expected: the validator flags (1) three times and says nothing about
+# (2) or (3).
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix p:    <https://example.org/mt-probe#> .
+
+# --- (1) type-side control -------------------------------------------------
+p:Agent a owl:Class, gufo:Kind .
+p:Widget a owl:Class, gufo:SubKind ;
+    rdfs:subClassOf p:Agent .      # well-formed: a SubKind under its Kind
+p:BadKind a owl:Class, gufo:Kind ;
+    rdfs:subClassOf p:Agent ;      # Kind specializing a Kind
+    rdfs:subClassOf p:Widget ;     # Kind specializing a SubKind
+    rdfs:subClassOf gufo:Event .   # endurant type under Event
+
+# --- (2) supplementation violation ----------------------------------------
+p:pump a gufo:FunctionalComplex .
+p:impeller a gufo:FunctionalComplex ;
+    gufo:isComponentOf p:pump .
+# No second part, no remainder: weak supplementation is violated and no
+# shape is in a position to notice.
+
+# --- (3) banned member chain -----------------------------------------------
+p:blade a gufo:FunctionalComplex ;
+    gufo:isComponentOf p:member1 .
+p:member1 a gufo:FunctionalComplex ;
+    gufo:isCollectionMemberOf p:fleet .
+p:fleet a gufo:Collection .
+p:blade gufo:isObjectProperPartOf p:fleet .
+# Members are atoms relative to their collective: a part of a member is not
+# a part of the collective. The assertion above is exactly the banned
+# composition, stated as fact.
