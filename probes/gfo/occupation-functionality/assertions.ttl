@@ -4,12 +4,26 @@
 #
 # Co-location: two presentials occupy one space entity.
 # Multilocation: one presential occupies two space entities.
+#
+# The declarations block repeats the artifact's bare typings so the file
+# renders correctly standalone (in Protege, undeclared properties display
+# as annotations). Deliberately NOT repeated: the functionality
+# declaration itself -- the constraint this probe tests must come only
+# from the pinned artifact.
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix gfob: <https://w3id.org/gfo/base/> .
 @prefix p:    <https://example.org/mt-probe#> .
+
+gfob:Presential a owl:Class .
+gfob:Space      a owl:Class .
+gfob:occupies   a owl:ObjectProperty .
 
 # co-location (must remain consistent, no identification)
 p:p1 a gfob:Presential ; gfob:occupies p:s .
 p:p2 a gfob:Presential ; gfob:occupies p:s .
+p:s  a gfob:Space .
 
 # multilocation (the spaces must be identified)
-p:q a gfob:Presential ; gfob:occupies p:s1 , p:s2 .
+p:q  a gfob:Presential ; gfob:occupies p:s1 , p:s2 .
+p:s1 a gfob:Space .
+p:s2 a gfob:Space .

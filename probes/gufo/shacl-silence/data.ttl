@@ -17,6 +17,19 @@
 @prefix gufo: <http://purl.org/nemo/gufo#> .
 @prefix p:    <https://example.org/mt-probe#> .
 
+# Declarations only, repeated from the gUFO artifact so the file renders
+# correctly standalone (in Protege, undeclared properties display as
+# annotations). The validation run merges this graph with gufo.ttl, where
+# these terms are declared identically.
+gufo:Kind              a owl:Class .
+gufo:SubKind           a owl:Class .
+gufo:Event             a owl:Class .
+gufo:FunctionalComplex a owl:Class .
+gufo:Collection        a owl:Class .
+gufo:isComponentOf        a owl:ObjectProperty .
+gufo:isCollectionMemberOf a owl:ObjectProperty .
+gufo:isObjectProperPartOf a owl:ObjectProperty .
+
 # --- (1) type-side control -------------------------------------------------
 p:Agent a owl:Class, gufo:Kind .
 p:Widget a owl:Class, gufo:SubKind ;

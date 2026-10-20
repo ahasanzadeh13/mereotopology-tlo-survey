@@ -138,6 +138,13 @@ def sum_models(n):
                 yield part, sumfn
 
 
+def chain_order(part, n):
+    """Render a chain model as its linear order, bottom first: an element
+    is lower the more elements it is part of."""
+    order = sorted(range(n), key=lambda x: -sum((x, y) in part for y in range(n)))
+    return " < ".join(str(x) for x in order)
+
+
 def sums(n):
     models = 0
     chains = 0
@@ -147,6 +154,14 @@ def sums(n):
         total = all((x, y) in part or (y, x) in part
                     for x in range(n) for y in range(n))
         chains += total
+        if total:
+            # In a chain the sum table is forced to the chain maximum;
+            # record the model and verify that reading of SumFn.
+            is_max = all(s == (x if (y, x) in part else y)
+                         for (x, y), s in sumfn.items())
+            log(f"    model: {chain_order(part, n)}"
+                f"  (x < y: x proper part of y; SumFn = chain maximum:"
+                f" {'yes' if is_max else 'NO'})")
         # collection with two distinct members 0, 1: C1 forbids their
         # overlap, O2 derives it from any common part. Comparability
         # gives the smaller element as a common part of both.

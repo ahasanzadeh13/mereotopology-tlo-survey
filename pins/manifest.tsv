@@ -2,6 +2,6 @@ system	repository	commit	artifact files read
 DOLCE	https://github.com/appliedontolab/DOLCE	0e059fd	OWL/DOLCEbasic.owl; OWL/DOLCEnaryRel.owl
 BFO	https://github.com/BFO-ontology/BFO-2020	dd89f4a	21838-2/common-logic/*.cl; 21838-2/owl/*
 SUMO	https://github.com/ontologyportal/sumo	b1af486	Merge.kif
-GFO	https://github.com/Onto-Med/GFO	233b38d	gfo.owl
+GFO	https://github.com/Onto-Med/GFO	233b38d	modules/gfo-base.owl
 GFO-light	https://github.com/Onto-Med/gfo-light	1ca9d8d	gfo-light.ttl
 gUFO	https://github.com/nemo-ufes/gufo	f412254	gufo.ttl; examples/common/gufoshapes.ttl

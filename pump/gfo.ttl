@@ -1,12 +1,24 @@
 # Pump encoding, GFO (pins: Onto-Med/GFO @ 233b38d, gfo-base module).
+#
 # R1: the typed parthood suite. gfo-base ships part_of with typed
-# refinements (constituent_part_of, categorial_part_of,
-# abstract_part_of); a material component is asserted by part_of.
+# refinements; a material component is asserted by the apt refinement,
+# constituent_part_of, and the artifact's own hierarchy
+# (constituent_part_of < proper_part_of < part_of, the upper two
+# transitive) returns the generic parthoods in the closure.
+#
+# Declarations repeat the pinned artifact's typing so the file renders
+# correctly on its own (in Protege, undeclared properties display as
+# annotations); semantics -- the property hierarchy, transitivity --
+# come only from gfo-base.owl at the pin.
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix gfob: <https://w3id.org/gfo/base/> .
 @prefix p:    <https://example.org/mt-pump#> .
 
+gfob:Presential a owl:Class .
+gfob:constituent_part_of a owl:ObjectProperty .
+
 p:impeller a gfob:Presential ;
-    gfob:part_of p:pump .
+    gfob:constituent_part_of p:pump .
 p:pump a gfob:Presential .
 
 # R2: the impeller-housing joint is inexpressible at this layer. The

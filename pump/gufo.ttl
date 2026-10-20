@@ -1,11 +1,22 @@
 # Pump encoding, gUFO (pins: nemo-ufes/gufo @ f412254).
+#
 # R1: componentOf, typed. The artifact ships isComponentOf beneath
-# isObjectProperPartOf, domain/range-typed to functional complexes; the
-# theory's necessity overlay (essential parthood) is not carried by the
-# artifact.
+# isObjectProperPartOf, with domain gufo:Object and range
+# gufo:FunctionalComplex; the theory's necessity overlay (essential
+# parthood) is not carried by the artifact, whose own documentation for
+# isComponentOf notes only non-transitivity and the qualified-parthood
+# pattern.
+#
+# Declarations repeat the pinned artifact's typing so the file renders
+# correctly on its own (in Protege, undeclared properties display as
+# annotations); semantics come only from gufo.ttl at the pin.
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix gufo: <http://purl.org/nemo/gufo#> .
 @prefix p:    <https://example.org/mt-pump#> .
+
+gufo:Kind              a owl:Class .
+gufo:FunctionalComplex a owl:Class .
+gufo:isComponentOf     a owl:ObjectProperty .
 
 p:Pump a owl:Class, gufo:Kind .
 p:Impeller a owl:Class, gufo:Kind .

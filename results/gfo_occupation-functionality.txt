@@ -1,5 +1,6 @@
 probe: gfo/occupation-functionality
-triples before/after closure: 905/3881
+triples before/after closure: 908/3881
   entailed  p:s1 owl:sameAs p:s2: PASS
   absent    p:p1 owl:sameAs p:p2: PASS
+closure written: results/closures/gfo_occupation-functionality.nt
 result: PASS

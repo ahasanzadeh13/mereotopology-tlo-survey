@@ -1,10 +1,33 @@
 # Pump encoding, DOLCE (pins: appliedontolab/DOLCE @ 0e059fd).
+#
 # R1: the impeller is part of the pump during the interval t1 -- asserted
-# through the reified temporary-parthood pattern of DOLCEnaryRel. The
-# presence chains project presence; by design nothing projects to a
-# timeless binary parthood (see probes/dolce/).
-@prefix nary: <https://w3id.org/DOLCE/OWL/DOLCEnaryRel#> .
-@prefix p:    <https://example.org/mt-pump#> .
+# through the reified temporary-parthood pattern of DOLCEnaryRel: one
+# individual of RRelTempPart carrying part, whole, and time. That the
+# parthood lives in a reified individual rather than in a binary relation
+# is the Section 6.1.2 finding this file makes concrete; the module's
+# presence chains project presence from the reification, and by design
+# nothing projects to a timeless binary parthood (see probes/dolce/).
+#
+# The class and property declarations below repeat what the pinned
+# modules already declare, so the file renders correctly when opened on
+# its own (in Protege, undeclared properties display as annotations).
+# No semantics are repeated: chains, transitivity, and the rest come
+# only from DOLCEbasic.owl and DOLCEnaryRel.owl at the pin.
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix basic: <https://w3id.org/DOLCE/OWL/DOLCEbasic#> .
+@prefix nary:  <https://w3id.org/DOLCE/OWL/DOLCEnaryRel#> .
+@prefix p:     <https://example.org/mt-pump#> .
+
+basic:PhysicalObject a owl:Class .
+basic:TimeInterval   a owl:Class .
+nary:RRelTempPart    a owl:Class .
+nary:tempPart  a owl:ObjectProperty .
+nary:tempWhole a owl:ObjectProperty .
+nary:rRelTime  a owl:ObjectProperty .
+
+p:pump     a basic:PhysicalObject .
+p:impeller a basic:PhysicalObject .
+p:t1       a basic:TimeInterval .
 
 p:r1 a nary:RRelTempPart ;
     nary:tempPart  p:impeller ;
@@ -13,4 +36,4 @@ p:r1 a nary:RRelTempPart ;
 
 # R2: the impeller-housing joint is inexpressible. DOLCE's artifact (and
 # theory) carries no connection or contact vocabulary; the absence check
-# is recorded in results/inventory_dolce.txt.
+# is recorded in results/inventory.txt.

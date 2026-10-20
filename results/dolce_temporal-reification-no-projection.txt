@@ -6,4 +6,5 @@ triples before/after closure: 2853/7010
   absent    p:x basic:properPartOf p:y: PASS
   absent    p:x basic:constantPartOf p:y: PASS
   absent    p:x basic:overlaps p:y: PASS
+closure written: results/closures/dolce_temporal-reification-no-projection.nt
 result: PASS

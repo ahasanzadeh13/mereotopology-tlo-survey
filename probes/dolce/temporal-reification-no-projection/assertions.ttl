@@ -1,8 +1,19 @@
 # Test assertion set: one complete reified temporal-parthood instance
 # (DOLCEnaryRel). x is asserted to be part of y at time t, in reified
 # form only. Whatever the module projects must come from its own chains.
+#
+# The declarations block repeats the module's bare typings so the file
+# renders correctly standalone (in Protege, undeclared properties display
+# as annotations). Declarations carry no semantics: the presence chains
+# this probe exercises live only in the pinned module.
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix nary: <https://w3id.org/DOLCE/OWL/DOLCEnaryRel#> .
 @prefix p:    <https://example.org/mt-probe#> .
+
+nary:RRelTempPart a owl:Class .
+nary:tempPart  a owl:ObjectProperty .
+nary:tempWhole a owl:ObjectProperty .
+nary:rRelTime  a owl:ObjectProperty .
 
 p:tp1 a nary:RRelTempPart ;
     nary:tempPart  p:x ;

@@ -7,6 +7,14 @@ probe: sumo/joint-unsatisfiability
 result: PASS (expected: no model with the assertion, axioms alone satisfiable)
 
 probe: sumo/sum-chain-forcing
+    model: 1 < 0  (x < y: x proper part of y; SumFn = chain maximum: yes)
+    model: 0 < 1  (x < y: x proper part of y; SumFn = chain maximum: yes)
   exhaustive n=2: 2 models of S1-S3; 2 are chains; 0 admit a 2-member collection
+    model: 2 < 1 < 0  (x < y: x proper part of y; SumFn = chain maximum: yes)
+    model: 1 < 2 < 0  (x < y: x proper part of y; SumFn = chain maximum: yes)
+    model: 1 < 0 < 2  (x < y: x proper part of y; SumFn = chain maximum: yes)
+    model: 2 < 0 < 1  (x < y: x proper part of y; SumFn = chain maximum: yes)
+    model: 0 < 2 < 1  (x < y: x proper part of y; SumFn = chain maximum: yes)
+    model: 0 < 1 < 2  (x < y: x proper part of y; SumFn = chain maximum: yes)
   exhaustive n=3: 6 models of S1-S3; 6 are chains; 0 admit a 2-member collection
 result: PASS (expected: satisfiable, all models chains, no 2-member collection)

@@ -1,0 +1,7 @@
+suite summary
+PASS  run_probes.py        OWL-RL entailment probes
+PASS  run_shacl.py         gUFO SHACL validation probe
+PASS  check_axiom_ids.py   BFO cited-axiom resolution
+PASS  sumo_models.py       SUMO finite model searches
+PASS  inventory.py         artifact inventories and absence checks
+5/5 suites pass

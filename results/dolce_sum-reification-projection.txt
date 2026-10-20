@@ -5,4 +5,5 @@ triples before/after closure: 2853/6973
   absent    p:s basic:partOf p:a: PASS
   absent    p:a basic:partOf p:b: PASS
   absent    p:a basic:overlaps p:b: PASS
+closure written: results/closures/dolce_sum-reification-projection.nt
 result: PASS

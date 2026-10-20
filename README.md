@@ -22,10 +22,14 @@ Table 2 and to no other version.
     probes/    one directory per probe: the claim it supports (claim.md or
                axioms.md), the test assertion set, and the expected result
     pump/      the running example of Section 3.3 encoded in each
-               artifact's own vocabulary (Table 5, executable form)
+               artifact's own vocabulary (Table 5, executable form);
+               its README says how to view the encodings with their
+               pinned artifacts
     cq/        the scenario competency questions of Section 3.1
     runner/    the scripts; no reasoner beyond OWL-RL and SHACL is used
-    results/   the recorded outputs the paper cites
+    results/   the recorded outputs the paper cites, and in
+               results/closures/ the full OWL-RL closure of each
+               entailment probe (canonical sorted N-Triples)
 
 The fetch script materializes each working tree directly at its pin
 (no checkout of any repository's current HEAD). One sumo fixture
@@ -44,14 +48,28 @@ in that directory. If a corpora/ subfolder is incomplete
 
     sh pins/fetch_pins.sh
     pip install -r runner/requirements.txt
+    python3 runner/run_all.py           # the whole suite + results/summary.txt
+
+or suite by suite:
+
     python3 runner/run_probes.py        # OWL-RL entailment probes
     python3 runner/run_shacl.py         # gUFO SHACL validation probe
     python3 runner/check_axiom_ids.py   # BFO cited-axiom resolution
     python3 runner/sumo_models.py       # SUMO finite model searches
     python3 runner/inventory.py         # declarations and absence checks
 
-Every command exits 0 and prints PASS for each check; outputs are
-written to results/ and should match the recorded files.
+Every command exits 0 and prints PASS for each check, with the evidence
+on the same lines: entailment verdicts triple by triple, the SHACL
+report in full, each cited axiom's source comment, the chain models
+listed explicitly. Outputs are rewritten into results/ on every run, so
+a re-run is compared against the record by diff: in a git clone,
+git status is clean exactly when the regenerated outputs match the
+committed ones; running from the archived zip, the zip itself is the
+baseline to compare against. The entailment probes also write each full
+closure to results/closures/ as canonicalized, sorted N-Triples --
+byte-stable across runs and platforms -- so every absence claim can be
+checked directly: grep the closure for the triple the probe expects
+absent, and find it missing.
 
 ## Probe index
 
@@ -88,6 +106,7 @@ published exports; no export generation is reproduced here.
 
 ## Tool versions
 
-Python 3.11; exact library pins in runner/requirements.txt. The OWL-RL
+Python 3.11 or later (results verified on CPython 3.13 under Linux and
+3.14 under Windows); exact library pins in runner/requirements.txt. The OWL-RL
 closure is owlrl's OWL 2 RL implementation; SHACL validation is pySHACL;
 no other reasoner is involved.

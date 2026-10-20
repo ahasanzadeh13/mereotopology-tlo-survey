@@ -27,9 +27,23 @@ import pathlib
 import sys
 
 import rdflib
+from rdflib.compare import to_canonical_graph
 from owlrl import DeductiveClosure, OWLRL_Semantics
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+
+
+def dump_closure(g, path):
+    """Write the full closure as canonicalized, sorted N-Triples.
+
+    Canonical blank-node labels plus sorted lines give the same bytes on
+    every run and platform, so a re-run's dump is comparable (by diff or
+    git) with the recorded one. The dump is the evidence behind the
+    absence checks: grep it for a triple the probe expects absent and
+    see for yourself that the reasoner did not draw it."""
+    cg = to_canonical_graph(g)
+    lines = sorted(cg.serialize(format="nt").splitlines())
+    path.write_text("\n".join(lines) + "\n")
 
 
 def parse_into(g, path):
@@ -53,7 +67,7 @@ def term(t, prefixes):
     return rdflib.URIRef(t)
 
 
-def run_probe(probe_dir, corpora):
+def run_probe(probe_dir, corpora, closure_path):
     spec = json.loads((probe_dir / "probe.json").read_text())
     g = rdflib.Graph()
     for module in spec["modules"]:
@@ -61,6 +75,7 @@ def run_probe(probe_dir, corpora):
     parse_into(g, probe_dir / spec["assertions"])
     n_before = len(g)
     DeductiveClosure(OWLRL_Semantics).expand(g)
+    dump_closure(g, closure_path)
 
     prefixes = spec.get("prefixes", {})
     lines = [f"probe: {spec['id']}",
@@ -74,6 +89,7 @@ def run_probe(probe_dir, corpora):
         present = (term(s, prefixes), term(p, prefixes), term(o, prefixes)) in g
         ok &= not present
         lines.append(f"  absent    {s} {p} {o}: {'PASS' if not present else 'FAIL'}")
+    lines.append(f"closure written: results/closures/{closure_path.name}")
     lines.append(f"result: {'PASS' if ok else 'FAIL'}")
     return ok, "\n".join(lines)
 
@@ -95,10 +111,12 @@ def main():
     failures = 0
     outdir = ROOT / "results"
     outdir.mkdir(exist_ok=True)
+    (outdir / "closures").mkdir(exist_ok=True)
     for probe_dir in probe_dirs:
-        ok, report = run_probe(probe_dir, corpora)
-        print(report, "\n")
         name = "_".join(probe_dir.parts[-2:])
+        ok, report = run_probe(probe_dir, corpora,
+                               outdir / "closures" / f"{name}.nt")
+        print(report, "\n")
         (outdir / f"{name}.txt").write_text(report + "\n")
         failures += 0 if ok else 1
     print(f"{len(probe_dirs)} probe(s), {failures} failure(s)")

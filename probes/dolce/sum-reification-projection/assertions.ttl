@@ -1,8 +1,19 @@
 # Test assertion set: one reified atemporal sum (DOLCEnaryRel).
 # Asserted: the reification only. Anything mereological must come from
 # the module's own chain axioms on partOf.
+#
+# The declarations block repeats the module's bare typings so the file
+# renders correctly standalone (in Protege, undeclared properties display
+# as annotations). Declarations carry no semantics: the chain axioms this
+# probe exercises live only in the pinned module.
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix nary: <https://w3id.org/DOLCE/OWL/DOLCEnaryRel#> .
 @prefix p:    <https://example.org/mt-probe#> .
+
+nary:RRelSum    a owl:Class .
+nary:sumAddend1 a owl:ObjectProperty .
+nary:sumAddend2 a owl:ObjectProperty .
+nary:sumResult  a owl:ObjectProperty .
 
 p:sum1 a nary:RRelSum ;
     nary:sumAddend1 p:a ;
