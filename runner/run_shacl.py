@@ -72,7 +72,7 @@ def main():
     print()
     print(report_text)
     (ROOT / "results").mkdir(exist_ok=True)
-    (ROOT / "results" / "gufo_shacl-silence.txt").write_text(report + "\n")
+    (ROOT / "results" / "gufo_shacl-silence.txt").write_text(report + "\n", encoding="utf-8", newline="\n")
     raise SystemExit(0 if ok else 1)
 
 

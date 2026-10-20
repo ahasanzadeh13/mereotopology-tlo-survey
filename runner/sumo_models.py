@@ -188,7 +188,7 @@ def main():
         "(expected: satisfiable, all models chains, no 2-member collection)")
     out = ROOT / "results"
     out.mkdir(exist_ok=True)
-    (out / "sumo_model-search.txt").write_text("\n".join(LINES) + "\n")
+    (out / "sumo_model-search.txt").write_text("\n".join(LINES) + "\n", encoding="utf-8", newline="\n")
     raise SystemExit(0 if (ok1 and ok2) else 1)
 
 

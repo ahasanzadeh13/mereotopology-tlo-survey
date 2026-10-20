@@ -137,7 +137,7 @@ def main():
     log(f"result: {'PASS' if not FAILURES else 'FAIL ' + str(FAILURES)}")
     out = ROOT / "results"
     out.mkdir(exist_ok=True)
-    (out / "inventory.txt").write_text("\n".join(LINES) + "\n")
+    (out / "inventory.txt").write_text("\n".join(LINES) + "\n", encoding="utf-8", newline="\n")
     raise SystemExit(0 if not FAILURES else 1)
 
 

@@ -49,7 +49,7 @@ def main():
                f"\n{len(SUITES) - failed}/{len(SUITES)} suites pass\n")
     print(summary)
     (ROOT / "results").mkdir(exist_ok=True)
-    (ROOT / "results" / "summary.txt").write_text(summary)
+    (ROOT / "results" / "summary.txt").write_text(summary, encoding="utf-8", newline="\n")
     raise SystemExit(1 if failed else 0)
 
 

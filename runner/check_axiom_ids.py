@@ -33,7 +33,7 @@ def main():
                          "subfolder exists but is incomplete, delete that "
                          "subfolder and run the fetch script again.")
 
-    ids = [ln.strip() for ln in IDS.read_text().splitlines()
+    ids = [ln.strip() for ln in IDS.read_text(encoding="utf-8").splitlines()
            if ln.strip() and not ln.startswith("#")]
 
     # Index every bracketed axiom id in the CL corpus, with the comment
@@ -44,7 +44,7 @@ def main():
     # one axiom and both locations are reported.
     index = {}
     for cl_file in sorted(cl_dir.glob("*.cl")):
-        text = cl_file.read_text(errors="replace")
+        text = cl_file.read_text(encoding="utf-8", errors="replace")
         for m in re.finditer(r"cl:comment\s+'((?:[^'\\]|\\.)*)\[([a-z]{3}-\d)\]", text):
             index.setdefault(m.group(2), []).append(
                 (cl_file.name, " ".join(m.group(1).split())))
@@ -67,7 +67,7 @@ def main():
     report = "\n".join(lines)
     print(report)
     (ROOT / "results").mkdir(exist_ok=True)
-    (ROOT / "results" / "bfo_cited-axioms.txt").write_text(report + "\n")
+    (ROOT / "results" / "bfo_cited-axioms.txt").write_text(report + "\n", encoding="utf-8", newline="\n")
     raise SystemExit(0 if ok else 1)
 
 

@@ -43,7 +43,7 @@ def dump_closure(g, path):
     see for yourself that the reasoner did not draw it."""
     cg = to_canonical_graph(g)
     lines = sorted(cg.serialize(format="nt").splitlines())
-    path.write_text("\n".join(lines) + "\n")
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
 
 
 def parse_into(g, path):
@@ -68,7 +68,7 @@ def term(t, prefixes):
 
 
 def run_probe(probe_dir, corpora, closure_path):
-    spec = json.loads((probe_dir / "probe.json").read_text())
+    spec = json.loads((probe_dir / "probe.json").read_text(encoding="utf-8"))
     g = rdflib.Graph()
     for module in spec["modules"]:
         parse_into(g, corpora / module)
@@ -117,7 +117,7 @@ def main():
         ok, report = run_probe(probe_dir, corpora,
                                outdir / "closures" / f"{name}.nt")
         print(report, "\n")
-        (outdir / f"{name}.txt").write_text(report + "\n")
+        (outdir / f"{name}.txt").write_text(report + "\n", encoding="utf-8", newline="\n")
         failures += 0 if ok else 1
     print(f"{len(probe_dirs)} probe(s), {failures} failure(s)")
     sys.exit(1 if failures else 0)
